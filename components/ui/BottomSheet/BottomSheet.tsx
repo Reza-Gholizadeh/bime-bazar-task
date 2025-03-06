@@ -22,7 +22,7 @@ export function BottomSheet({
       {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 transition-opacity"
-          onClick={onClose}
+          onClick={() => onClose()}
         >
           <motion.div
             initial={{ y: "100%" }}
@@ -35,7 +35,7 @@ export function BottomSheet({
             {title && (
               <div className="flex justify-between items-center px-3 py-4 border-b-light ">
                 <h3 className="text-lg font-medium">{title}</h3>
-                <button onClick={onClose}>
+                <button onClick={() => onClose()}>
                   <Close />
                 </button>
               </div>

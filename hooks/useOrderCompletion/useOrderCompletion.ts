@@ -1,3 +1,4 @@
+'use client'
 import { MODALS } from "@/constant";
 import { completeOrder } from "@/gate/endpoints";
 import { OrderCompletionRequest, OrderCompletionResponse } from "@/gate/type";

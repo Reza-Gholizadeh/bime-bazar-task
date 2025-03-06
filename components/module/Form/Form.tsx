@@ -1,19 +1,16 @@
 "use client";
-import { ADDRESS, BUTTONS, DRIVER, MODALS } from "@/constant";
-import { TextField } from "../TextField";
-import { Button } from "@/components";
-import { useEffect } from "react";
-import { address } from "../AddressModal/AddressModal.type";
-import { AddressModal } from "../AddressModal";
+
+import { Suspense, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import clsx from "clsx";
+import { ADDRESS, BUTTONS, DRIVER, MODALS } from "@/constant";
+import { AddressModal, Button, FaildOrderModal, TextField } from "@/components";
 import { driverFormSchema, type DriverFormData } from "./validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import clsx from "clsx";
 import { useOrderCompletion } from "@/hooks";
 import { OrderCompletionRequest } from "@/gate/type";
 import { useSubmissionForm } from "@/store/context/submitionFormContext";
 import { useModal, useModalActions } from "@/store/context/modalsContext";
-import { FaildOrderModal } from "../FaildOrderModal";
 
 export const Form = () => {
   const { openModal, closeModal } = useModalActions();
@@ -46,7 +43,7 @@ export const Form = () => {
     },
   });
 
-  const handleSelectAddress = (param: address) => {
+  const handleSelectAddress = (param: { fullAddress: string; id: string }) => {
     dispatch({
       type: "SET_ADDRESS",
       payload: { id: param.id, value: param.fullAddress },
@@ -83,7 +80,7 @@ export const Form = () => {
     !nationalIdValue || !phoneNumberValue || !state.selectedAddress.id;
 
   return (
-    <>
+    <Suspense>
       <form
         className="flex-start flex-col gap-6 gorw px-5"
         onSubmit={handleSubmit(onSubmit)}
@@ -140,12 +137,10 @@ export const Form = () => {
           isOpen={!!modalState[MODALS.CHOOSE_ADDRESS]}
           onClose={closeAddressModal}
           selectAddress={handleSelectAddress}
-          selectedAddress={
-            {
-              id: state.selectedAddress.id,
-              fullAddress: state.selectedAddress.value,
-            } as address
-          }
+          selectedAddress={{
+            id: state.selectedAddress.id as string,
+            fullAddress: state.selectedAddress.value,
+          }}
         />
       )}
       {modalState[MODALS.FAILD_ORDER] && (
@@ -157,6 +152,6 @@ export const Form = () => {
           phoneNumber={state.formData.phoneNumber as string}
         />
       )}
-    </>
+    </Suspense>
   );
 };

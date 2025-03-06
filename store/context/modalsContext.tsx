@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import {
   createContext,
   useContext,
   useReducer,
   ReactNode,
   useEffect,
+  Suspense,
 } from "react";
 import { ModalState, ModalAction } from "./modalContext.type";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -37,7 +38,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const modalQuery = searchParams.get("modal");
+    const modalQuery = searchParams.get("modal") || "";
     if (!modalQuery) {
       Object.keys(state).forEach((modalName) => {
         if (state[modalName]) {
@@ -48,9 +49,11 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   }, [searchParams.toString()]);
 
   return (
-    <ModalContext.Provider value={{ state, dispatch }}>
-      {children}
-    </ModalContext.Provider>
+    <Suspense>
+      <ModalContext.Provider value={{ state, dispatch }}>
+        {children}
+      </ModalContext.Provider>
+    </Suspense>
   );
 };
 

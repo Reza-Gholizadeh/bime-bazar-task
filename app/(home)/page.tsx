@@ -1,7 +1,6 @@
+"use client";
 import { INSURANCE, VEHICLE } from "@/constant";
-import { CarDetail, Header } from "@/components";
-import { Form } from "./component/Form";
-
+import { Form, CarDetail, Header } from "@/components";
 export default function Home() {
   return (
     <div className="flex flex-col gap-8">

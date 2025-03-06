@@ -1,8 +1,7 @@
-import { BottomSheet } from "../BottomSheet";
-import { Row } from "../Row";
+"use client";
 import { RedClose } from "@/assets/icon";
 import { useAddresses } from "@/hooks";
-import { Button } from "@/components";
+import { BottomSheet, Button, Row } from "@/components";
 import { AddressSelectorProps } from "./AddressModal.type";
 import { ADDRESS, BUTTONS, STATES } from "@/constant";
 
@@ -17,7 +16,6 @@ export function AddressModal({
   if (error) {
     return <div>مجدد تلاش کنید</div>;
   }
-
   return (
     <BottomSheet
       isOpen={isOpen}
