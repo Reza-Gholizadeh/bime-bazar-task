@@ -38,7 +38,6 @@ export function AddressModal({
                 description={address.details}
                 isSelected={selectedAddress?.id === address.id}
                 onRadioChange={() => {
-                  console.log(address, "addresswwww");
                   selectAddress({
                     fullAddress: address.details,
                     id: address.id,

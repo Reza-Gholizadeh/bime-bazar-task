@@ -6,6 +6,7 @@ import { INSURANCE } from "@/constant";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
 import { HomeIndicatorSpace } from "@/components/HomeIndicatorSpace/HomeIndicatorSpace";
 import FormProviders from "@/provider/submitionFormProvider";
+import { ModalProvider } from "@/store/context/modalsContext";
 
 const vazirMatn = Vazirmatn({
   weight: ["400", "500", "700"],
@@ -28,9 +29,11 @@ export default function RootLayout({
       <body className={`${vazirMatn.variable} antialiased`}>
         <ReactQueryProvider>
           <FormProviders>
-            <Header title={INSURANCE.DETAIL} />
-            {children}
-            <HomeIndicatorSpace />
+            <ModalProvider>
+              <Header title={INSURANCE.DETAIL} />
+              {children}
+              <HomeIndicatorSpace />
+            </ModalProvider>
           </FormProviders>
         </ReactQueryProvider>
       </body>

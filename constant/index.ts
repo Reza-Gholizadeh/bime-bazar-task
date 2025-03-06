@@ -25,8 +25,17 @@ export const BUTTONS = {
   SUBMIT: "تایید و ادامه",
   SELECT: "انتخاب",
   BACK: "بازگشت",
+  TRY: "تلاش مجدد",
 };
 export const STATES = {
   LOAD_ADDRESS: "در حال دریافت آدرس‌ها...",
   ORDER_COMPLETE: "ثبت اطلاعات شما، با موفقیت انجام شد.",
+  FAILD: "متاسفانه در ثبت اطلاعات شما، خطایی رخ داده است.",
+  TRY_AGAIN: "مجددا، تلاش کنید.",
+};
+
+export const MODALS = {
+  CHOOSE_ADDRESS: "CHOOSE_ADDRESS",
+  DELETE_ADDRESS: "DELETE_ADDRESS",
+  FAILD_ORDER: "FAILD_ORDER",
 };

@@ -1,8 +1,8 @@
 "use client";
-import { ADDRESS, BUTTONS, DRIVER } from "@/constant";
+import { ADDRESS, BUTTONS, DRIVER, MODALS } from "@/constant";
 import { TextField } from "../TextField";
 import { Button } from "@/components";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { address } from "../AddressModal/AddressModal.type";
 import { AddressModal } from "../AddressModal";
 import { useForm } from "react-hook-form";
@@ -12,14 +12,21 @@ import clsx from "clsx";
 import { useOrderCompletion } from "@/hooks";
 import { OrderCompletionRequest } from "@/gate/type";
 import { useSubmissionForm } from "@/store/context/submitionFormContext";
+import { useModal, useModalActions } from "@/store/context/modalsContext";
+import { FaildOrderModal } from "../FaildOrderModal";
 
 export const Form = () => {
-  const [openAddressModal, setOpenAddressModal] = useState(false);
+  const { openModal, closeModal } = useModalActions();
+  const { state: modalState } = useModal();
+
   const { state, dispatch } = useSubmissionForm();
 
   const { mutate } = useOrderCompletion();
-  const handleCloseModal = () => {
-    setOpenAddressModal(false);
+  const closeAddressModal = () => {
+    closeModal(MODALS.CHOOSE_ADDRESS);
+  };
+  const closeFaildOrderModal = () => {
+    closeModal(MODALS.FAILD_ORDER);
   };
 
   const {
@@ -117,7 +124,7 @@ export const Form = () => {
           <Button
             variant="primary"
             type="button"
-            onClick={() => setOpenAddressModal(true)}
+            onClick={() => openModal(MODALS.CHOOSE_ADDRESS)}
           >
             {ADDRESS.CHOOSE}
           </Button>
@@ -128,17 +135,28 @@ export const Form = () => {
           </Button>
         </div>
       </form>
-      <AddressModal
-        isOpen={openAddressModal}
-        onClose={handleCloseModal}
-        selectAddress={handleSelectAddress}
-        selectedAddress={
-          {
-            id: state.selectedAddress.id,
-            fullAddress: state.selectedAddress.value,
-          } as address
-        }
-      />
+      {modalState[MODALS.CHOOSE_ADDRESS] && (
+        <AddressModal
+          isOpen={!!modalState[MODALS.CHOOSE_ADDRESS]}
+          onClose={closeAddressModal}
+          selectAddress={handleSelectAddress}
+          selectedAddress={
+            {
+              id: state.selectedAddress.id,
+              fullAddress: state.selectedAddress.value,
+            } as address
+          }
+        />
+      )}
+      {modalState[MODALS.FAILD_ORDER] && (
+        <FaildOrderModal
+          isOpen={!!modalState[MODALS.FAILD_ORDER]}
+          onClose={closeFaildOrderModal}
+          addressId={state.selectedAddress.id as string}
+          nationalId={state.formData.nationalId as string}
+          phoneNumber={state.formData.phoneNumber as string}
+        />
+      )}
     </>
   );
 };

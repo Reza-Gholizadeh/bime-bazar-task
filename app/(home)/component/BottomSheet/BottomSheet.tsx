@@ -29,15 +29,17 @@ export function BottomSheet({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-full max-w-md bg-white rounded-t-lg shadow-lg p-4"
+            className="w-full max-w-md bg-white shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-medium">{title}</h3>
-              <button onClick={onClose}>
-                <Close />
-              </button>
-            </div>
+            {title && (
+              <div className="flex justify-between items-center px-3 py-4 border-b-light ">
+                <h3 className="text-lg font-medium">{title}</h3>
+                <button onClick={onClose}>
+                  <Close />
+                </button>
+              </div>
+            )}
             <div className="mt-2">{children}</div>
           </motion.div>
         </div>
