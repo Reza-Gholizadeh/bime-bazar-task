@@ -14,7 +14,13 @@ export default function OrderCompletion() {
       <div className="flex-center flex-col gap-8 ">
         <div className="flex-center flex-col">
           <FormValidate />
-          <h3>{STATES.ORDER_COMPLETE}</h3>
+          <h3 className="text-base font-medium leading-6">
+            <span>{STATES.ORDER_COMPLETE_STEP_ONE}</span>
+            <span className="text-success ">
+              {STATES.ORDER_COMPLETE_STEP_TWO}
+            </span>
+            <span>{STATES.ORDER_COMPLETE_STEP_THERE}</span>
+          </h3>
         </div>
         <CarDetail>
           <CarDetail.Plate />

@@ -32,7 +32,9 @@ export const BUTTONS = {
 };
 export const STATES = {
   LOAD_ADDRESS: "در حال دریافت آدرس‌ها...",
-  ORDER_COMPLETE: "ثبت اطلاعات شما، با موفقیت انجام شد.",
+  ORDER_COMPLETE_STEP_ONE: "ثبت اطلاعات شما، با",
+  ORDER_COMPLETE_STEP_TWO: " موفقیت ",
+  ORDER_COMPLETE_STEP_THERE: "انجام شد.",
   FAILD: "متاسفانه در ثبت اطلاعات شما، خطایی رخ داده است.",
   TRY_AGAIN: "مجددا، تلاش کنید.",
 };
