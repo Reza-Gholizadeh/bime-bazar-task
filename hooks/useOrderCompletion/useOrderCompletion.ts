@@ -2,9 +2,9 @@
 import { MODALS } from "@/constant";
 import { completeOrder } from "@/gate/endpoints";
 import { OrderCompletionRequest, OrderCompletionResponse } from "@/gate/type";
-import { useModal, useModalActions } from "@/store/context/modalsContext";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useModal, useModalActions } from "../useModal";
 
 export function useOrderCompletion() {
   const { openModal, closeModal } = useModalActions();

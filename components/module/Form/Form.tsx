@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useOrderCompletion } from "@/hooks";
 import { OrderCompletionRequest } from "@/gate/type";
 import { useSubmissionForm } from "@/store/context/submitionFormContext";
-import { useModal, useModalActions } from "@/store/context/modalsContext";
+import { useModal, useModalActions } from "@/hooks/useModal";
 
 export const Form = () => {
   const { openModal, closeModal } = useModalActions();

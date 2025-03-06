@@ -5,8 +5,8 @@ import { Header, IndicatorSpace } from "@/components";
 import { INSURANCE } from "@/constant";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
 import FormProviders from "@/provider/submitionFormProvider";
-import { ModalProvider } from "@/store/context/modalsContext";
 import { Suspense } from "react";
+import { ModalProvider } from "@/provider/modalsProvider";
 
 const vazirMatn = Vazirmatn({
   weight: ["400", "500", "700"],
