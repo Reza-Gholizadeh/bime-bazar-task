@@ -31,6 +31,16 @@ body {
   background: var(--background);
   font-family: var(--font-vazir-matn), sans-serif;
 }
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-start{
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
 
 .text-field {
   border-color: var(--text-field-color);

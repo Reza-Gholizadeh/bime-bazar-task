@@ -19,8 +19,14 @@ export const ADDRESS = {
   FOR_INSURANCE: "آدرس جهت درج روی بیمه‌نامه",
   NOTE: "لطفا آدرسی را که می‌خواهید روی بیمه‌نامه درج شود، را وارد کنید.",
   CHOOSE: "انتخاب از آدرس‌های من",
+  SELECT_ADDRESS: "انتخاب آدرس",
 };
 export const BUTTONS = {
   SUBMIT: "تایید و ادامه",
   SELECT: "انتخاب",
+  BACK: "بازگشت",
+};
+export const STATES = {
+  LOAD_ADDRESS: "در حال دریافت آدرس‌ها...",
+  ORDER_COMPLETE: "ثبت اطلاعات شما، با موفقیت انجام شد.",
 };

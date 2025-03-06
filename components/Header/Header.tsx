@@ -1,5 +1,5 @@
+import { CarIcon } from "@/assets/icon";
 import { HeaderProps } from "./Header.type";
-import { CarIcon } from "@/assets/icon/CarIcon";
 
 export const Header = ({ title }: HeaderProps) => {
   return (

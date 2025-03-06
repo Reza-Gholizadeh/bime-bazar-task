@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Close } from "@/assets/icon";
 import { BottomSheetProps } from "./BottomSheet.type";
+import { motion, AnimatePresence } from "framer-motion";
+import { useBottomSheetLogic } from "@/hooks";
 
 export function BottomSheet({
   isOpen,
@@ -12,44 +13,36 @@ export function BottomSheet({
   title,
   children,
 }: BottomSheetProps) {
-  const [mounted, setMounted] = useState(false);
+  const { mounted } = useBottomSheetLogic(isOpen);
 
-  useEffect(() => {
-    setMounted(true);
-
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  if (!mounted || !isOpen) return null;
+  if (!mounted) return null;
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 transition-opacity"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-full max-w-md bg-white shadow-lg animate-in slide-in-from-bottom"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between border-b p-4 rtl:text-right">
-          <h2 className="text-lg font-medium">{title}</h2>
-          <button
-            onClick={onClose}
-            className="rounded-full p-1 hover:bg-gray-100"
-            aria-label="Close"
+    <AnimatePresence>
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 transition-opacity"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            className="w-full max-w-md bg-white rounded-t-lg shadow-lg p-4"
+            onClick={(e) => e.stopPropagation()}
           >
-            <Close />
-          </button>
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-medium">{title}</h3>
+              <button onClick={onClose}>
+                <Close />
+              </button>
+            </div>
+            <div className="mt-2">{children}</div>
+          </motion.div>
         </div>
-        <div className="max-h-[80vh] overflow-auto">{children}</div>
-      </div>
-    </div>,
+      )}
+    </AnimatePresence>,
     document.body
   );
 }

@@ -7,9 +7,9 @@ const variants = {
   light: "bg-white text-black border border-black cursor-pointer",
   dark: "bg-black text-white cursor-pointer",
   secondary:
-    "bg-[var(--loading-gray)] bg-[var(--loading-text-gray)] cursor-not-allowed",
+    "bg-[var(--loading-gray)] text-[var(--loading-text-gray)] cursor-not-allowed",
   disabled:
-    "bg-[var(--custom-gray)] bg-[var(--disable-text-gray)] cursor-not-allowed",
+    "bg-[var(--disable-gray)] text-[var(--disable-text-gray)] cursor-not-allowed",
   primary: "bg-[var(--primary)] w-full text-black cursor-pointer",
 };
 

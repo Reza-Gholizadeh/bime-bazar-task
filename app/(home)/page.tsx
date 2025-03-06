@@ -1,6 +1,6 @@
 import { INSURANCE, VEHICLE } from "@/constant";
-import { CarDetail } from "./component/CarDetail";
-import { Header } from "@/components";
+import { CarDetail, Header } from "@/components";
+import { Form } from "./component/Form";
 
 export default function Home() {
   return (
@@ -19,6 +19,7 @@ export default function Home() {
       <div>
         <Header title={VEHICLE.OWNER_DETAILS} />
       </div>
+      <Form />
     </div>
   );
 }
