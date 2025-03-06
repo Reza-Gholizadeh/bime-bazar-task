@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BIME-TASK
 
-## Getting Started
+یه پروژه‌ی Next.js با استفاده از React، TypeScript، Tailwind CSS و ابزارهای مدرن دیگه برای ساخت یه اپلیکیشن وب.
 
-First, run the development server:
+---
+
+## نصب و راه‌اندازی
+
+برای نصب و راه‌اندازی پروژه، مراحل زیر رو دنبال کنید:
+
+1. مخزن پروژه رو کلون کنید:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+       git clone https://github.com/username/bime-task.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. وارد دایرکتوری پروژه بشید:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+   cd bime-task
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. وابستگی‌ها رو نصب کنید:
 
-## Learn More
+```bash
+    yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+## استفاده
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+برای اجرای پروژه، از دستورات زیر استفاده کنید:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. اجرای اپلیکیشن در حالت توسعه:
 
-## Deploy on Vercel
+```bash
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ساختار پروژه
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ساختار پیشنهادی پروژه به این صورته (بر اساس استانداردهای Next.js و فایل‌های موجود):
+
+```bash
+BIME-TASK/
+├── .next/              # خروجی ساخت Next.js
+├── app/                # صفحات و مسیریابی Next.js
+├── assets/             # فایل‌های استاتیک مثل تصاویر و فونت‌ها
+├── components/         # کامپوننت‌های React
+│   ├── common/         # کامپوننت‌های عمومی
+│   ├── module/         # کامپوننت‌های ماژولار
+│   ├── ui/             # کامپوننت‌های رابط کاربری
+│   └── index.ts        # نقطه ورود برای export کامپوننت‌ها
+├── constant/           # مقادیر ثابت پروژه
+├── hooks/              # custom hooks
+├── node_modules/       # وابستگی‌های نصب‌شده
+├── styles/             # فایل‌های استایل (CSS و غیره)
+├── .gitignore          # فایل‌های نادیده‌گرفته‌شده در Git
+├── next-env.d.ts       # فایل اعلان TypeScript برای Next.js
+├── next.config.ts      # تنظیمات Next.js
+├── package.json        # تنظیمات و وابستگی‌های پروژه
+├── README.md           # مستندات پروژه
+├── tsconfig.json       # تنظیمات TypeScript
+└── yarn.lock           # فایل قفل Yarn
+```
+
+## ویژگی‌های پروژه
+
+```bash
+Next.js:
+TypeScript
+Tailwind
+ESLint:
+React Hook Form + Zod: برای مدیریت و اعتبارسنجی فرم‌ها.
+Framer Motion: برای انیمیشن‌های زیبا.
+Tanstack React Query: برای مدیریت داده و fetching.
+Yarn: مدیریت پکیج‌ها.
+```
