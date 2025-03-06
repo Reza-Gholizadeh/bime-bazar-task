@@ -1,3 +1,4 @@
+"use client";
 import { useContext } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModalContext } from "@/store/context/modalsContext";

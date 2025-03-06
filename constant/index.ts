@@ -20,9 +20,12 @@ export const ADDRESS = {
   NOTE: "لطفا آدرسی را که می‌خواهید روی بیمه‌نامه درج شود، را وارد کنید.",
   CHOOSE: "انتخاب از آدرس‌های من",
   SELECT_ADDRESS: "انتخاب آدرس",
+  REMOVE_ADDRESS: "حذف آدرس",
+  REMOVE_NOTICE: "آیا از حذف آدرس خود، مطمین هستید؟",
 };
 export const BUTTONS = {
   SUBMIT: "تایید و ادامه",
+  APPROVE: "تایید",
   SELECT: "انتخاب",
   BACK: "بازگشت",
   TRY: "تلاش مجدد",

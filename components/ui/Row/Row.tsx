@@ -1,5 +1,7 @@
 import React from "react";
 import { RowProps } from "./Row.type";
+import { useModalActions } from "@/hooks/useModal";
+import { MODALS } from "@/constant";
 
 export const Row = ({
   leftIcon,
@@ -8,7 +10,14 @@ export const Row = ({
   isSelected,
   id,
   onRadioChange,
+  handleDelete,
 }: RowProps) => {
+  const { openModal } = useModalActions();
+
+  const handClick = () => {
+    handleDelete(id);
+    openModal(MODALS.DELETE_ADDRESS);
+  };
   return (
     <div className="flex items-start p-4 rounded-lg mb-3  transition-colors">
       <label className="ml-3 flex items-center">
@@ -24,7 +33,9 @@ export const Row = ({
         <p className="font-medium text-sm leading-5  mb-1">{title}</p>
         <p className="font-normal text-xs leading-4">{description}</p>
       </div>
-      <div className="mr-3 text-gray-600">{leftIcon}</div>
+      <div className="mr-3 text-gray-600" onClick={handClick}>
+        {leftIcon}
+      </div>
     </div>
   );
 };

@@ -7,4 +7,5 @@ export interface RowProps {
   isSelected: boolean;
   id: string;
   onRadioChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleDelete: (id: string) => void;
 }
